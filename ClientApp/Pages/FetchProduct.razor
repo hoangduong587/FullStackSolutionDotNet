@@ -1,0 +1,58 @@
+@page "/fetchproducts"
+@inject HttpClient Http
+
+<h3>Product List</h3>
+
+<ul>
+   @if (products != null)
+    {
+        foreach (var product in products )
+        {
+            <li>@product.Name - $@product.Price - @product.Stock - @product.Category.Name - @product.Category.Id </li>
+        }
+    }
+    else
+    {
+        <li>Loading...</li>
+    }
+</ul>
+
+@code {
+    private Product[]? products;
+    protected override async Task OnInitializedAsync()
+    {
+      try
+    {
+        var response = await Http.GetAsync("http://localhost:5044/api/products");
+
+        if (response.IsSuccessStatusCode)
+        {
+            products = await response.Content.ReadFromJsonAsync<Product[]>();
+        }
+        else
+        {
+            Console.WriteLine($"API returned error: {response.StatusCode}");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error fetching products: {ex.Message}");
+    }
+
+    }
+
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public int Stock { get; set; }
+        public Category Category { get; set; }
+    }
+
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}
