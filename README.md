@@ -30,6 +30,25 @@
 
 └── FullStackSolutionDotnet.sln
 
+This full-stack application consists of two main components:
+
+ServerApp (Backend API)
+
+- Implements a Minimal API using ASP.NET Core.
+- Serves product data via the endpoint /api/products.
+- Product information is defined in Data/Product.cs and returned in JSON format.
+- Uses IMemoryCache to optimize performance by caching product data.
+
+ClientApp (Frontend UI)
+
+- Built with Blazor WebAssembly.
+- Fetches product data from the ServerApp API.
+- Displays the product list using Razor components and dynamic data binding.
+
+Together, these components demonstrate seamless front-end and back-end integration using modern .NET technologies.
+
+
+
 How to run Project:
 
 Step 1 : Run ServerApp and make sure it will host on port 5044 , this is port where client will listen to.
