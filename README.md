@@ -1,22 +1,37 @@
 /FULLSTACKAPP
-│
+|
+
+|
 ├── ClientApp/                 # Blazor WebAssembly frontend
+
 │   ├── Pages/                 # UI components (FetchProduct, Home, etc.)
+
 │   ├── wwwroot/               # Static assets
+
 │   ├── Program.cs             # WASM startup
+
 │   └── ClientApp.csproj
+
 │
+
 ├── ServerApp/                 # Blazor Server + Minimal API backend
+
 │   ├── Data/                  # ProductData.cs (static product list)
+
 │   ├── Models/                # Product.cs, Category.cs
+
 │   ├── Program.cs             # API endpoints + caching + CORS
+
 │   ├── appsettings.json
+
 │   └── ServerApp.csproj
+
 │
+
 └── FullStackSolutionDotnet.sln
 
 How to run Project:
-Step 1 : Run ServerApp and make sure it will host on port 5044 , this is port where client will listen to
+Step 1 : Run ServerApp and make sure it will host on port 5044 , this is port where client will listen to.
 Step 2 : Run ClientApp and open the link of its localhost.
 To add more product data, please add them in ServerApp/Data/ProductData.cs
 
